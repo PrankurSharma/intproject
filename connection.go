@@ -13,7 +13,7 @@ import (
 
 func ConnectDB() *mongo.Collection {
 
-	clientOptions := options.Client().ApplyURI("your_cluster_endpoint")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
 
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 
@@ -23,7 +23,7 @@ func ConnectDB() *mongo.Collection {
 
 	fmt.Println("Connected to MongoDB!")
 
-	collection := client.Database("go_rest_api").Collection("scheds")
+	collection := client.Database("scheds").Collection("scheds")
 
 	return collection
 }
